@@ -45,6 +45,13 @@ Route::group([], function () {
     
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard', [HomeController::class,'dashboard'])->name('front.dashboard');
+
+        Route::inertia('/eduction/add', 'Front/Education/Create')->name('education.create');
+        Route::inertia('/experience/add', 'Front/Experience/Create')->name('experience.create');
+        Route::inertia('/posts', 'Front/Posts/Index')->name('posts.index');
+        Route::inertia('/post', 'Front/Posts/View')->name('posts.show');
+        Route::inertia('/profiles', 'Front/Profile/Index')->name('profiles.index');
+        Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');
     });
 
 });

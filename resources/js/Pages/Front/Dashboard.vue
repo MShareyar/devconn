@@ -5,14 +5,14 @@
       <h1 class="large text-primary">Dashboard</h1>
       <p class="lead"><i class="fas fa-user"></i> Welcome {{ user.name }}</p>
       <div class="dash-buttons">
-        <a href="create-profile.html" class="btn btn-light"
-          ><i class="fas fa-user-circle text-primary"></i> Edit Profile</a
+        <Link :href="route('education.create')" class="btn btn-light"
+          ><i class="fas fa-user-circle text-primary"></i> Edit Profile</Link
         >
-        <a href="add-experience.html" class="btn btn-light"
-          ><i class="fab fa-black-tie text-primary"></i> Add Experience</a
+        <Link :href="route('experience.create')" class="btn btn-light"
+          ><i class="fab fa-black-tie text-primary"></i> Add Experience</Link
         >
-        <a href="add-education.html" class="btn btn-light"
-          ><i class="fas fa-graduation-cap text-primary"></i> Add Education</a
+        <Link :href="route('education.create')" class="btn btn-light"
+          ><i class="fas fa-graduation-cap text-primary"></i> Add Education</Link
         >
       </div>
 

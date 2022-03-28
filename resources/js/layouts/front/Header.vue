@@ -6,14 +6,14 @@
       >
     </h4>
     <ul>
-      <li><Link :href="route('front.login')">Developers</Link></li>
+      <li><Link :href="route('profiles.index')">Developers</Link></li>
 
       <template v-if="!user">
         <li><Link :href="route('front.register')">Register</Link></li>
         <li><Link :href="route('front.login')">Login</Link></li>
       </template>
       <template v-else>
-        <li><Link :href="route('front.dashboard')">Posts</Link></li>
+        <li><Link :href="route('posts.index')">Posts</Link></li>
 
         <li>
           |

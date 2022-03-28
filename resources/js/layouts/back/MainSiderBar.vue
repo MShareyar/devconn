@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import MainSideBarMenu from "../routes";
+import MainSideBarMenu from "../../routes";
 
 export default {
   data() {

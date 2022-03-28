@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import AuthLayout from "../../layouts/AuthLayout.vue";
+import AuthLayout from "../../layouts/back/AuthLayout.vue";
 import { Head } from "@inertiajs/inertia-vue";
 
 export default {

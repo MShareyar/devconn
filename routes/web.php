@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Front\AuthController as FrontAuthController;
+use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +17,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'],function(){
-    Route::inertia('/','Dashboard');
-    Route::inertia('/dashboard','Dashboard')->name('dashboard');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::inertia('/dashboard', 'Dashboard')->name('admin.dashboard');
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    });
+
+    Route::group(['middleware' => 'guest'], function () {
+        Route::inertia('/login', 'Auth/Login');
+    });
 });
 
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::inertia('/register', 'Auth/Register')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::post('/register',[AuthController::class,'register'])->name('register');
-Route::inertia('/register', 'Auth/Register');//->middleware('guest');
-Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::inertia('/login', 'Auth/Login')->middleware('guest');
 
+Route::group([], function () {
+    Route::group(['middleware' => 'guest'], function () {
+        Route::inertia('/', 'Front/Landing')->name('landing');
+        Route::inertia('/login', 'Front/Auth/Login')->name('front.login');
+        Route::inertia('/register', 'Front/Auth/Register')->name('front.register');
+        
+        Route::post('/login', [FrontAuthController::class, 'login'])->name('front.login');
+    });
+    
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/dashboard', [HomeController::class,'dashboard'])->name('front.dashboard');
+    });
+
+});

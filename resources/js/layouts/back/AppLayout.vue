@@ -8,7 +8,7 @@
 
 
 <script>
-import MainSideBar from "../layouts/MainSiderBar.vue";
+import MainSideBar from "../../layouts/back/MainSiderBar.vue";
 
 export default {
   components: { MainSideBar }

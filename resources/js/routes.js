@@ -1,6 +1,6 @@
 const MainSideBarMenu = [
     {
-        url: route("dashboard"),
+        url: route("admin.dashboard"),
         name: "Dasbhoard",
         icon: "fas fa-tachometer-alt",
         component: "Dashboard",

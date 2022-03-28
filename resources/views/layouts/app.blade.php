@@ -12,6 +12,8 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ mix('css/front/app.css') }}" rel="stylesheet">
     @inertiaHead
 </head>
 <body class="sidebar-mini layout-fixed sidebar-open">

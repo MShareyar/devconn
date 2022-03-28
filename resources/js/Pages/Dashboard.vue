@@ -8,7 +8,7 @@
 
 
 <script>
-import AppLayout from '../layouts/AppLayout.vue';
+import AppLayout from '../layouts/back/AppLayout.vue';
 import { Head } from '@inertiajs/inertia-vue';
 
 export default {

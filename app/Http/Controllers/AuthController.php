@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
-{
+{    
+    /**
+     * login
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function login(LoginRequest $request)
     {
 
@@ -18,6 +25,15 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $inputs = $request->validated();
+        $inputs['password'] = Hash::make($inputs['password']);
+        $user = User::create($inputs);
+        return redirect()->route('dashboard');
+        
     }
 }

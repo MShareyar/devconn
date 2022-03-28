@@ -11,12 +11,6 @@
 import MainSideBar from "../layouts/MainSiderBar.vue";
 
 export default {
-  components: { MainSideBar },
-  props: {
-    user: Object,
-  },
-  mounted() {
-    console.log(this.user);
-  },
+  components: { MainSideBar }
 };
 </script>

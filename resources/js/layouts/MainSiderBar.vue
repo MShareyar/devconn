@@ -24,7 +24,7 @@
           />
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ user.name }}</a>
         </div>
       </div>
 
@@ -36,7 +36,24 @@
           role="menu"
         >
           <li class="nav-item" v-for="(route, key) in routes" :key="key">
-            <a :href="route.url" class="nav-link" :class="{'active': $page.component == route.component}">
+            <template v-if="route.name == 'Logout'">
+              <form method="post" @submit.prevent="form.post(route.url)">
+                
+                <button class="nav-link" type="submit">
+                  <i class="nav-icon" :class="route.icon"></i>
+                  <p>
+                    {{ route.name }}
+                  </p>
+                </button>
+              </form>
+            </template>
+
+            <a
+              v-else
+              :href="route.url"
+              class="nav-link"
+              :class="{ active: $page.component == route.component }"
+            >
               <i class="nav-icon" :class="route.icon"></i>
               <p>
                 {{ route.name }}
@@ -92,12 +109,14 @@ import MainSideBarMenu from "../routes";
 export default {
   data() {
     return {
+      form : this.$inertia.form({}),
       routes: MainSideBarMenu,
     };
   },
-
-  mounted() {
-    console.log(this.routes);
+  computed: {
+    user() {
+      return this.$page.props.user;
+    },
   },
 };
 </script>

@@ -3,7 +3,14 @@ const MainSideBarMenu = [
         url: route("dashboard"),
         name: "Dasbhoard",
         icon: "fas fa-tachometer-alt",
-        component:"Dashboard"
+        component: "Dashboard",
+    },
+
+    {
+        url: route("logout"),
+        name: "Logout",
+        icon: "fas fa-sign-out-alt",
+        component: "Logout",
     },
 ];
 

@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'],function(){
-    Route::inertia('/','App');
+    Route::inertia('/','Dashboard');
+    Route::inertia('/dashboard','Dashboard')->name('dashboard');
 });
 
 
 Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::inertia('/login', 'Auth/Login');
+Route::inertia('/login', 'Auth/Login')->middleware('guest');
 
-Route::inertia('/home','App')->name('home');

@@ -1,67 +1,78 @@
 <template>
   <AuthLayout>
     <Head title="Login" />
-    <form @submit.prevent="form.post(route('login'))">
-      <div class="row mb-3">
-        <label for="email" class="col-md-4 col-form-label text-md-end"
-          >Email Address</label
-        >
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="https://adminlte.io/themes/v3/index2.html">TasksIn</a>
+      </div>
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+          <form @submit.prevent="form.post(route('login'))">
+            <div class="input-group mb-3">
+              <input
+                id="email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': errors.email }"
+                name="email"
+                v-model="form.email"
+                autocomplete="email"
+                placeholder="Email"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
 
-        <div class="col-md-6">
-          <input
-            id="email"
-            type="email"
-            class="form-control @error('email') is-invalid @enderror"
-            name="email"
-            v-model="form.email"
-            required
-            autocomplete="email"
-            autofocus
-          />
+              <span class="invalid-feedback" role="alert" v-if="errors.email">
+                <strong>{{ errors.email }}</strong>
+              </span>
+            </div>
 
-          <span class="invalid-feedback" role="alert">
-            <strong>error will show here</strong>
-          </span>
+            <div class="input-group mb-3">
+              <input
+                id="password"
+                type="password"
+                class="form-control"
+                :class="{ 'is-invalid': errors.password }"
+                name="password"
+                v-model="form.password"
+                placeholder="Password"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+
+              <span
+                class="invalid-feedback"
+                role="alert"
+                v-if="errors.password"
+              >
+                <strong>{{ errors.password }}</strong>
+              </span>
+            </div>
+
+            <div class="row">
+              <div class="col-8">
+                <div class="icheck-primary mt-1">
+                  <a for="remember" href="#"> Forgot Password ?</a>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+              </div>
+            </div>
+
+            
+          </form>
         </div>
       </div>
-
-      <div class="row mb-3">
-        <label for="password" class="col-md-4 col-form-label text-md-end"
-          >Password</label
-        >
-
-        <div class="col-md-6">
-          <input
-            id="password"
-            type="password"
-            class="form-control @error('password') is-invalid @enderror"
-            name="password"
-            v-model="form.password"
-            required
-            autocomplete="current-password"
-          />
-
-          <span class="invalid-feedback" role="alert">
-            <strong>error will show here</strong>
-          </span>
-        </div>
-      </div>
-
-      <div class="row mb-0">
-        <div class="col-md-8 offset-md-4">
-          <button type="submit" class="btn btn-primary">Login</button>
-
-          <!-- @if (Route::has('password.request'))
-                  <a
-                    class="btn btn-link"
-                    href="{{ route('password.request') }}"
-                  >
-                    Forgot Your Password?
-                  </a>
-                  @endif -->
-        </div>
-      </div>
-    </form>
+    </div>
   </AuthLayout>
 </template>
 
@@ -73,6 +84,9 @@ export default {
   components: {
     AuthLayout,
     Head,
+  },
+  props: {
+    errors: Object,
   },
   data() {
     return {

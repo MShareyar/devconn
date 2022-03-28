@@ -14,7 +14,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @inertiaHead
 </head>
-<body>
+<body class="sidebar-mini layout-fixed sidebar-open">
     @inertia
 </body>
 </html>

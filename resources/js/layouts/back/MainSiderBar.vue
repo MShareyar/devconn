@@ -48,7 +48,7 @@
               </form>
             </template>
 
-            <a
+            <Link
               v-else
               :href="route.url"
               class="nav-link"
@@ -58,7 +58,7 @@
               <p>
                 {{ route.name }}
               </p>
-            </a>
+            </Link>
           </li>
 
           <!-- Add icons to the links using the .nav-icon class
@@ -105,8 +105,12 @@
 
 <script>
 import MainSideBarMenu from "../../routes";
+import {Link} from '@inertiajs/inertia-vue';
 
 export default {
+  components:{
+    Link
+  },
   data() {
     return {
       form : this.$inertia.form({}),

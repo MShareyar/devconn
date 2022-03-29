@@ -23,10 +23,12 @@
           </Link>
         </li>
         <li>
-          <Link :href="route('front.dashboard')" title="Logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span class="hide-sm">Logout</span></Link
-          >
+          <Link method="POST" :href="route('front.logout')" >
+            <i class="fas fa-sign-out-alt" ></i>
+            <span class="hide-sm">
+              Logout
+            </span>
+          </Link>
         </li>
       </template>
     </ul>

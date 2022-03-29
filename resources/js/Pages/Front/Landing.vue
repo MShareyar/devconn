@@ -10,7 +10,7 @@
             other developers
           </p>
           <div class="buttons">
-            <Link :href="route('front.login')" class="btn btn-primary">Sign Up</Link>
+            <Link :href="route('front.register')" class="btn btn-primary">Sign Up</Link>
             <Link :href="route('front.login')" class="btn btn-light">Login</Link>
           </div>
         </div>

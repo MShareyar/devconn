@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {    
@@ -34,7 +35,18 @@ class AuthController extends Controller
         $inputs = $request->validated();
         $inputs['password'] = Hash::make($inputs['password']);
         $user = User::create($inputs);
-        return redirect()->route('dashboard');
-        
+        Auth::loginUsingId($user->id);
+        return redirect()->route('front.dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('landing');
     }
 }

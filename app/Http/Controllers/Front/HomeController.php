@@ -10,8 +10,7 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        $user = Auth::user();
-
+        $user = Auth::user()->load('profile');
         return inertia('Front/Dashboard',compact('user'));
     }
 }

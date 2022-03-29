@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Front\AuthController as FrontAuthController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,5 +57,7 @@ Route::group([], function () {
         Route::inertia('/posts', 'Front/Posts/Index')->name('posts.index');
         Route::inertia('/post', 'Front/Posts/View')->name('posts.show');
         Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');
+
+        Route::resource('usersprofile',UserProfileController::class);
     });
 });

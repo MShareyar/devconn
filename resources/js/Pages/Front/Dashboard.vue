@@ -5,14 +5,27 @@
       <h1 class="large text-primary">Dashboard</h1>
       <p class="lead"><i class="fas fa-user"></i> Welcome {{ user.name }}</p>
       <div class="dash-buttons">
-        <Link :href="route('education.create')" class="btn btn-light"
-          ><i class="fas fa-user-circle text-primary"></i> Edit Profile</Link
-        >
+        <template>
+          <Link
+            v-if="user.profile === null"
+            :href="route('usersprofile.create')"
+            class="btn btn-light"
+            ><i class="fas fa-user-circle text-primary"></i> Edit Profile
+          </Link>
+          <Link
+            v-else
+            :href="route('usersprofile.edit', user.profile.id)"
+            class="btn btn-light"
+            ><i class="fas fa-user-circle text-primary"></i> Edit Profile
+          </Link>
+        </template>
+
         <Link :href="route('experience.create')" class="btn btn-light"
           ><i class="fab fa-black-tie text-primary"></i> Add Experience</Link
         >
         <Link :href="route('education.create')" class="btn btn-light"
-          ><i class="fas fa-graduation-cap text-primary"></i> Add Education</Link
+          ><i class="fas fa-graduation-cap text-primary"></i> Add
+          Education</Link
         >
       </div>
 
@@ -84,8 +97,8 @@ import { Head, Link } from "@inertiajs/inertia-vue";
 import AppLayout from "../../layouts/front/AppLayout.vue";
 export default {
   components: { Head, Link, AppLayout },
-  props:{
-    user:Object
-  }
+  props: {
+    user: Object,
+  },
 };
 </script>

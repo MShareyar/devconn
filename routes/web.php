@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Front\AuthController as FrontAuthController;
 use App\Http\Controllers\Front\EducationController;
+use App\Http\Controllers\Front\ExperienceController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +55,7 @@ Route::group([], function () {
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('front.dashboard');
 
         // Route::inertia('/eduction/add', 'Front/Education/Create')->name('education.create');
-        Route::inertia('/experience/add', 'Front/Experience/Create')->name('experience.create');
+        // Route::inertia('/experience/add', 'Front/Experience/Create')->name('experience.create');
         Route::inertia('/posts', 'Front/Posts/Index')->name('posts.index');
         Route::inertia('/post', 'Front/Posts/View')->name('posts.show');
         Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');
@@ -62,5 +63,6 @@ Route::group([], function () {
         Route::resource('usersprofile',UserProfileController::class);
 
         Route::resource('education',EducationController::class);
+        Route::resource('experience',ExperienceController::class);
     });
 });

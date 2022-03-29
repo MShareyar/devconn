@@ -22,6 +22,7 @@ class CreateEducationsTable extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->boolean('is_currently_active')->default(0);
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

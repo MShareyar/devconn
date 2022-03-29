@@ -35,7 +35,7 @@ import { createInertiaApp } from "@inertiajs/inertia-vue";
 
 createInertiaApp({
     resolve: (name) => require(`./Pages/${name}`),
-    title: title => `${title} - E-Commerce`,
+    title: title => `${title} - DevConnector`,
     setup({ el, App, props, plugin }) {
         Vue.use(plugin).mixin({ methods: { route } });
 

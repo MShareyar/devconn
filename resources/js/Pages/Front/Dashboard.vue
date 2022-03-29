@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <Head title="Welcome To The Developer Connector" />
+    <Head title="Dashboard" />
     <section class="container">
       <h1 class="large text-primary">Dashboard</h1>
       <p class="lead"><i class="fas fa-user"></i> Welcome {{ user.name }}</p>
@@ -29,57 +29,62 @@
         >
       </div>
 
-      <h2 class="my-2">Experience Credentials</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th class="hide-sm">Title</th>
-            <th class="hide-sm">Years</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Tech Guy Web Solutions</td>
-            <td class="hide-sm">Senior Developer</td>
-            <td class="hide-sm">02-03-2009 - 01-02-2014</td>
-            <td>
-              <button class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Traversy Media</td>
-            <td class="hide-sm">Instructor & Developer</td>
-            <td class="hide-sm">02-03-2015 - Now</td>
-            <td>
-              <button class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <template v-if="user.experiences.length">
+        <h2 class="my-2">Experience Credentials</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th class="hide-sm">Title</th>
+              <th class="hide-sm">Years</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(experience, key) in user.experiences" :key="key">
+              <td>{{ experience.company }}</td>
+              <td class="hide-sm">{{ experience.title }}</td>
+              <td class="hide-sm">
+                {{ experience.start_date }} - {{ experience.end_date }}
+              </td>
+              <td>
+                <button class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
 
-      <h2 class="my-2">Education Credentials</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>School</th>
-            <th class="hide-sm">Degree</th>
-            <th class="hide-sm">Years</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Northern Essex</td>
-            <td class="hide-sm">Associates</td>
-            <td class="hide-sm">02-03-2007 - 01-02-2009</td>
-            <td>
-              <button class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <template v-if="user.educations.length">
+        <h2 class="my-2">Education Credentials</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>School</th>
+              <th class="hide-sm">Degree</th>
+              <th class="hide-sm">Years</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(education, key) in user.educations" :key="key">
+              <td>{{ education.school }}</td>
+              <td class="hide-sm">{{ education.degree }}</td>
+              <td class="hide-sm">
+                {{ education.start_date }} - {{ education.end_date }}
+              </td>
+              <td>
+                <button
+                  @click="deleteEducation(education.id)"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
 
       <div class="my-2">
         <button class="btn btn-danger">
@@ -99,6 +104,11 @@ export default {
   components: { Head, Link, AppLayout },
   props: {
     user: Object,
+  },
+  methods: {
+    deleteEducation(educationId) {
+      return this.$inertia.delete(route("education.destroy", educationId));
+    },
   },
 };
 </script>

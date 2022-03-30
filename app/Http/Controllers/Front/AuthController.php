@@ -25,6 +25,11 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['password'=>'Credentials does not match!']);
         }
 
+        if (Auth::user()->is_admin) {
+            Auth::logout();
+            return redirect()->back()->withErrors(['password' => __('auth.failed')]);
+        }
+
         $request->session()->regenerate();
 
         return redirect()->route('front.dashboard');

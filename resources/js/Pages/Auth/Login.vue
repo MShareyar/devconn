@@ -8,7 +8,7 @@
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
-          <form @submit.prevent="form.post(route('login'))">
+          <form @submit.prevent="form.post(route('admin.login'))">
             <div class="input-group mb-3">
               <input
                 id="email"

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth','isadmin']], function () {
         Route::inertia('/dashboard', 'Dashboard')->name('admin.dashboard');
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     });
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::inertia('/register', 'Auth/Register')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
 
 Route::group([], function () {
@@ -42,20 +42,18 @@ Route::group([], function () {
     
     Route::group(['middleware' => 'guest'], function () {
         Route::inertia('/', 'Front/Landing')->name('landing');
-        Route::inertia('/login', 'Front/Auth/Login')->name('front.login');
+        Route::inertia('/login', 'Front/Auth/Login')->name('login');
         Route::inertia('/register', 'Front/Auth/Register')->name('front.register');
 
         Route::post('/login', [FrontAuthController::class, 'login'])->name('front.login');
         Route::post('/register', [FrontAuthController::class, 'register'])->name('front.register');
     });
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth','iscustomer']], function () {
         Route::post('/logout', [FrontAuthController::class, 'logout'])->name('front.logout');
 
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('front.dashboard');
 
-        // Route::inertia('/eduction/add', 'Front/Education/Create')->name('education.create');
-        // Route::inertia('/experience/add', 'Front/Experience/Create')->name('experience.create');
         Route::inertia('/posts', 'Front/Posts/Index')->name('posts.index');
         Route::inertia('/post', 'Front/Posts/View')->name('posts.show');
         Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');

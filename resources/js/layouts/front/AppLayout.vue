@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="container">
+    <div :class=" $page.component == 'Front/Landing' ? 'landing' :'container'">
       <div v-if="$page.props.flash.message" class="alert" :class="$page.props.flash.type == 'success' ?'alert-success':'alert-danger'">
         {{ $page.props.flash.message }}
       </div>

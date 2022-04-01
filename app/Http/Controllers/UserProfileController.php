@@ -21,7 +21,9 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $usersprofile = UserProfileResource::collection(UserProfile::all());
+        $usersprofile = UserProfile::paginate(15)->through(function ($item) {
+                        return new UserProfileResource($item);
+                    });
         return inertia('Front/Profile/Index',compact('usersprofile'));
     }
 

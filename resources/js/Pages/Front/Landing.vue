@@ -1,7 +1,6 @@
 <template>
   <AppLayout>
     <Head title="Welcome To The Developer Connector" />
-    <section class="landing">
       <div class="dark-overlay">
         <div class="landing-inner">
           <h1 class="x-large">Developer Connector</h1>
@@ -15,7 +14,6 @@
           </div>
         </div>
       </div>
-    </section>
   </AppLayout>
 </template>
 

@@ -6,7 +6,7 @@
       >
     </h4>
     <ul>
-      <li><Link :href="route('profiles.index')">Developers</Link></li>
+      <li><Link :href="route('usersprofile.index')">Developers</Link></li>
 
       <template v-if="!user">
         <li><Link :href="route('front.register')">Register</Link></li>

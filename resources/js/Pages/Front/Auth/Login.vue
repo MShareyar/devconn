@@ -27,7 +27,7 @@
             name="password"
           />
         </div>
-        <input type="submit" class="btn btn-primary" value="Login" />
+        <input type="submit" class="btn btn-primary" :value="form.processing ? 'Loading...':'Login'"  :disabled="form.processing"/>
       </form>
       <p class="my-1">
         Don't have an account?

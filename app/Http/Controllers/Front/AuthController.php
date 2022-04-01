@@ -41,7 +41,7 @@ class AuthController extends Controller
         $inputs['password'] = Hash::make($inputs['password']);
         $user = User::create($inputs);
         Auth::loginUsingId($user->id);
-        return redirect()->route('front.dashboard');
+        return redirect()->route('usersprofile.create');
     }
 
     public function logout(Request $request)

@@ -38,7 +38,7 @@ class ExperienceController extends Controller
     public function store(StoreExperienceRequest $request)
     {
         $experience = Experience::create($request->validated() + ['user_id' => auth()->id()]);
-        return redirect()->route('front.dashboard');
+        return redirect()->route('front.dashboard')->with('success', 'Experience created successfuly!');
     }
 
     /**
@@ -84,6 +84,6 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         $experience->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Experience deleted successfuly!');
     }
 }

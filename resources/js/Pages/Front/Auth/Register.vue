@@ -1,7 +1,6 @@
 <template>
   <AppLayout>
     <Head title="Login" />
-    <section class="container">
 
       <div class="alert alert-danger" v-if="errors.length">
         <ul>
@@ -59,13 +58,12 @@
             autocomplete="off"
           />
         </div>
-        <input type="submit" class="btn btn-primary" value="Register" />
+        <input type="submit" class="btn btn-primary" :value="form.processing ? 'Loading...':'Signup'"  :disabled="form.processing"/>
       </form>
       <p class="my-1">
         Already have an account?
         <Link :href="route('front.login')">Sign In</Link>
       </p>
-    </section>
   </AppLayout>
 </template>
 

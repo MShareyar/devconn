@@ -64,4 +64,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Experience::class);
     }
+
+    /**
+     * 
+     * Scopes related to User model
+     * 
+     */
+
+    public function scopeIsAdmin($query, $admin = true)
+    {
+        return $query->where('is_admin', $admin);
+    }
 }

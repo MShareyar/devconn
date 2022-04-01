@@ -32,10 +32,11 @@ files
  */
 
 import { createInertiaApp } from "@inertiajs/inertia-vue";
+import { InertiaProgress } from "@inertiajs/progress";
 
 createInertiaApp({
     resolve: (name) => require(`./Pages/${name}`),
-    title: title => `${title} - DevConnector`,
+    title: (title) => `${title} - DevConnector`,
     setup({ el, App, props, plugin }) {
         Vue.use(plugin).mixin({ methods: { route } });
 
@@ -43,4 +44,20 @@ createInertiaApp({
             render: (h) => h(App, props),
         }).$mount(el);
     },
+});
+
+
+InertiaProgress.init({
+    // The delay after which the progress bar will
+    // appear during navigation, in milliseconds.
+    delay: 250,
+
+    // The color of the progress bar.
+    color: "#29d",
+
+    // Whether to include the default NProgress styles.
+    includeCSS: true,
+
+    // Whether the NProgress spinner will be shown.
+    showSpinner: true,
 });

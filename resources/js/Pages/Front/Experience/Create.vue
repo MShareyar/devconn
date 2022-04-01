@@ -1,7 +1,6 @@
 <template>
   <AppLayout>
     <Head title="Edit Profile" />
-    <section class="container">
       <h1 class="large text-primary">
        Add An Experience
       </h1>
@@ -86,10 +85,9 @@
             {{ errors.description }}
           </span>
         </div>
-        <input type="submit" class="btn btn-primary my-1" />
+        <input type="submit" class="btn btn-primary my-1" :value="form.processing ? 'Loading...':'Submit'"  :disabled="form.processing" />
         <Link class="btn btn-light my-1" :href="route('front.dashboard')">Go Back</Link>
       </form>
-    </section>
   </AppLayout>
 </template>
 <script>

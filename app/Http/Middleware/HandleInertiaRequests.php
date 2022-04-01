@@ -38,7 +38,12 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'user' => Auth::check() ? Auth::user() : null
+            'flash'=>[
+                'message' => session('success'),
+                'type'    => session('success') ? 'success':'error'
+            ],
+            'user' => Auth::check() ? Auth::user() : null,
+
         ]);
     }
 }

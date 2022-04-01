@@ -56,7 +56,7 @@ Route::group([], function () {
 
         Route::inertia('/posts', 'Front/Posts/Index')->name('posts.index');
         Route::inertia('/post', 'Front/Posts/View')->name('posts.show');
-        Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');
+        // Route::inertia('/profile', 'Front/Profile/View')->name('profiles.show');
 
         Route::resource('usersprofile',UserProfileController::class);
 

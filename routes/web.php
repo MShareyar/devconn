@@ -6,7 +6,7 @@ use App\Http\Controllers\Front\AuthController as FrontAuthController;
 use App\Http\Controllers\Front\EducationController;
 use App\Http\Controllers\Front\ExperienceController;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\Front\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -49,7 +49,7 @@ import Pagination from "../../../components/Pagination.vue";
 export default {
   components: { Head, Link, AppLayout, Pagination },
   props: {
-    usersprofile: Array,
+    usersprofile: Object,
   },
 };
 </script>

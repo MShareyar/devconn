@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\UserProfile;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\UserProfileStoreRequest;
 use App\Http\Resources\EducationResource;
 use App\Http\Resources\ExperienceResource;
 use App\Http\Resources\UserProfileResource;
+use App\Http\Requests\UserProfileStoreRequest;
 
 class UserProfileController extends Controller
 {
@@ -21,9 +21,10 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $usersprofile = UserProfile::paginate(15)->through(function ($item) {
-                        return new UserProfileResource($item);
-                    });
+        $usersprofile = UserProfile::where('user_id','!=',Auth::user()->id)
+                        ->paginate(15)->through(function ($item) {
+                            return new UserProfileResource($item);
+                        });
         return inertia('Front/Profile/Index',compact('usersprofile'));
     }
 

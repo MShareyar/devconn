@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
     <Head title="User Profile Details" />
-    <section class="container">
+    <section>
       <Link :href="route('usersprofile.index')" class="btn btn-light"
         >Back To Profiles</Link
       >

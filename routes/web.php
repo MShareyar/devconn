@@ -54,6 +54,7 @@ Route::group([], function () {
     Route::group(['middleware' => ['auth','iscustomer']], function () {
         Route::post('/logout', [FrontAuthController::class, 'logout'])->name('front.logout');
 
+        
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('front.dashboard');
 
         Route::resource('usersprofile',UserProfileController::class);

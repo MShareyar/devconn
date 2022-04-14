@@ -17,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return inertia('Front/Posts/Index');
+        $posts = Post::paginate(15)->through(function ($item) {
+                            return new PostResource($item);
+                        });
+        return inertia('Front/Posts/Index',compact('posts'));
     }
 
     /**
@@ -51,6 +54,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $post = $post->load('comments');
         $post = new PostResource($post);
         return inertia('Front/Posts/Detail', compact('post'));
     }

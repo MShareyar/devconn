@@ -18,9 +18,12 @@ class PostResource extends JsonResource
             'id'         => $this->id,
             'title'      => $this->title,
             'content'    => $this->content,
-            'created_at' => $this->created_at->format('Y-m-d'),
+            'created_at' => $this->created_at->format('m/d/Y'),
             'user_id'    => $this->user_id,
-            'created_by' => $this->user->name
+            'created_by' => $this->user->name,
+            'comments'   => CommentResource::collection($this->comments) ?? [],
+            'total_comments' => $this->comments->count(),
+            'can_delete' => $this->user_id == auth()->id()
         ];
     }
 }

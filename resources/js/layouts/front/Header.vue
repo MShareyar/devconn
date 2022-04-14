@@ -13,7 +13,7 @@
         <li><Link :href="route('front.login')">Login</Link></li>
       </template>
       <template v-else>
-        <li><Link :href="route('post.create')">Posts</Link></li>
+        <li><Link :href="route('post.index')">Posts</Link></li>
 
         <li>
           |

@@ -575,3 +575,11 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+.btn-light:not(:disabled):not(.disabled):active,
+.btn-light:not(:disabled):not(.disabled).active,
+.show>.btn-light.dropdown-toggle {
+  color: #ffffff;
+  background-color: #17a2b8;
+  border-color: #d3d9df;
+}

@@ -23,7 +23,9 @@ class PostResource extends JsonResource
             'created_by' => $this->user->name,
             'comments'   => CommentResource::collection($this->comments) ?? [],
             'total_comments' => $this->comments->count(),
-            'can_delete' => $this->user_id == auth()->id()
+            'can_delete' => $this->user_id == auth()->id(),
+            'liked'      => $this->liked(),
+            'likes_count'=> $this->likeCount,
         ];
     }
 }

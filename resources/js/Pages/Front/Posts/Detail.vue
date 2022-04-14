@@ -2,7 +2,7 @@
   <AppLayout>
     <Head title="View Post" />
     <section>
-      <Link :href="route('post.create')" class="btn">Back To Posts</Link>
+      <Link :href="route('post.index')" class="btn">Back To Posts</Link>
       <div class="post bg-white p-1 my-1">
         <div>
           <Link :href="route('usersprofile.show', post.user_id)">
@@ -26,7 +26,7 @@
         </div>
         <form
           class="form my-1"
-          @submit.prevent.="form.post(route('comments.store'))"
+          @submit.prevent="form.post(route('comments.store'),{preserveState: false})"
         >
           <textarea
             name="text"

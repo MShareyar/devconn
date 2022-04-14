@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\AuthController as FrontAuthController;
 use App\Http\Controllers\Front\EducationController;
 use App\Http\Controllers\Front\ExperienceController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\LikeController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -60,5 +61,6 @@ Route::group([], function () {
         Route::resource('education',EducationController::class);
         Route::resource('experience',ExperienceController::class);
         Route::resource('post',PostController::class);
+        Route::resource('like',LikeController::class)->only(['store','destroy']);
     });
 });

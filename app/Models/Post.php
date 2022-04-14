@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Conner\Likeable\Likeable;
 use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,6 +12,7 @@ class Post extends Model
 {
     use HasFactory;
     use Commentable;
+    use Likeable;
 
     protected $fillable = ['title','content','user_id'];
 

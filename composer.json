@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "laravelista/comments": "^4.5",
+        "rtconner/laravel-likeable": "^3.2",
         "tightenco/ziggy": "^1.4"
     },
     "require-dev": {

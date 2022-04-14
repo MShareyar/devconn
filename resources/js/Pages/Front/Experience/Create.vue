@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <Head title="Edit Profile" />
+    <Head title="Add Experience" />
       <h1 class="large text-primary">
        Add An Experience
       </h1>

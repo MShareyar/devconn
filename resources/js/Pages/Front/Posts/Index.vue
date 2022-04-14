@@ -8,7 +8,8 @@
         >
       </div>
 
-      <div class="posts">
+      <div class="posts" >
+        <template v-if="posts.data.length > 0">
         <div
           class="post bg-white p-1 my-1"
           v-for="(post, key) in posts.data"
@@ -43,11 +44,17 @@
                 post.total_comments ? post.total_comments : ""
               }}</span>
             </Link>
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" @click="deletePost(post.id)">
               <i class="fas fa-times"></i>
             </button>
           </div>
         </div>
+        </template>
+        <template v-else>
+          <div style="text-align:center;box-shadow:0px 1px 6px 1px #c8cfcf;margin-top:30px">
+            <h2 style="padding:20px"> No post available!</h2>
+          </div>
+        </template>
         <pagination :links="posts.links" />
       </div>
     </section>
@@ -68,6 +75,12 @@ export default {
       axios.post(route("like.store"), { post_id: postId }).then((response) => {
         this.$inertia.reload({only:['posts']});
       });
+    },
+    deletePost(postId) {
+
+      if(confirm('Are you sure?')){
+        this.$inertia.delete(route("post.destroy", postId));
+      }
     },
   },
 };

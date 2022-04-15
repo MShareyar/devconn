@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><h1 style="text-align:center;">DevConnector</h1></a></p>
+<p align="center"><a href="https://devscon.herokuapp.com/" target="_blank"><h1 style="text-align:center;">DevConnector</h1></a></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
